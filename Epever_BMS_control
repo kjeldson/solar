@@ -94,10 +94,10 @@ esp32:
 # Enable Home Assistant API
 api:
   encryption:
-    key: "68tHgFfAjO4t7+rLygpqWR5BP0kH+jg5agzOD2INqV8="
+    key: "xxxxxxxxxxxxxxxxxxxxxx"
 
 ota:
-  password: "222a3c453cf81c77e74c1e56f2d756ee"
+  password: "xxxxxxxxxxxxxxxxxx"
 
 
 
@@ -105,9 +105,9 @@ ota:
 wifi:
   networks:
   - ssid: Device-net
-    password: lappedykker
+    password: xxxxxxxxxx
   - ssid: kjeld4g-2.4
-    password: lappedykker
+    password: xxxxxxxxxx
 
 
   # Enable fallback hotspot (captive portal) in case wifi connection fails
@@ -131,10 +131,10 @@ mqtt:
  broker: net.dykker-oplevelser.dk
  port: 1883
  username: mqttuser
- password: Lappedykker@1
+ password: xxxxxxxxxxxxxx
 
 
-
+#Onewire temp sensor
 dallas:
  - pin: GPIO23
 
@@ -168,6 +168,10 @@ modbus_controller:
     command_throttle: 200ms
     setup_priority: -10
     update_interval: ${updates}
+
+# i disse filer kan man udkomentere de sensore man ikke vil have med 
+# BEMÆRK man må ikke tage alle med da det nok beslaster esp for meget 
+#som de står nu er det de vigtigeste for mig der er med 
 
 packages:
   #tracer-rated-datum: !include tracer-rated-datum.yaml
@@ -251,7 +255,7 @@ binary_sensor:
     address: 0x3201
     bitmask: 0xC000
 
-#di indgang til digitalt
+#digitale indgange til div
   - platform: gpio
     pin: 22
     name: "Watertank_low"
@@ -272,6 +276,7 @@ binary_sensor:
     name: "DI_4"
     filters:
      - delayed_on: 10ms
+
 # relæ switch udgang
 switch:
   - platform: gpio
